@@ -1,7 +1,10 @@
 <form method="GET" action="/quizes/answer">
-  Pregunta:
-  <%= pregunta %>
-    <p></p>
-    <input type="text" name="respuesta" value="Respuesta">
-    <input type="submit" value="Enviar">
+  <div class="form-group">
+    <label>Pregunta:</label>
+    <label>
+      <%= pregunta %>
+    </label>
+    <input type="text" class="form-control" name="respuesta" placeholder="respuesta">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

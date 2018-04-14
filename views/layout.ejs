@@ -3,41 +3,71 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> Preguntas </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='/stylesheets/wide.css'
-  />
-  <link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='/stylesheets/smartphone.css' />
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
 </head>
 
 <body>
-  <div id="page-wrap">
-    <header class="main" id="h1">
-      <h2>Quiz
-        <span>: el juego de las preguntas</span>
-      </h2>
-    </header>
-
-    <nav class="main" id="n1" role="navigation">
-      <span>
-        <a href="/">Inicio</a>
-      </span>
-      <span>
-        <a href="/quizes/question">Preguntas</a>
-      </span>
-    </nav>
-
-    <section class="main" id="s1">
-      <div>
-        <%- body %>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Quiz</a>
       </div>
-    </section>
 
-    <footer class="main" id="f1">
-      <a href="http://es.wikipedia.org/wiki/Quiz">
-        ¿Que es un Quiz?</a>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="/">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li>
+            <a href="/quizes/question">Preguntas</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+
+  <div class="page-header text-center">
+    <h1>Quiz
+      <small>El juego de las preguntas</small>
+    </h1>
+  </div>
+
+
+  <section class="text-center">
+    <div class="panel panel-default">
+      <%- body %>
+    </div>
+  </section>
+  <!--Footer-->
+  <div>
+    <footer class="well">
+      <!--Copyright-->
+      <div class="container">
+        © 2018 Copyright:
+        <a href="https://computerwizards.es"> CW </a>
+      </div>
+      <!--/Copyright-->
     </footer>
+  </div>
+  <!--/Footer-->
   </div>
 </body>
 
