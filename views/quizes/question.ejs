@@ -1,10 +1,13 @@
-<form method="GET" action="/quizes/answer">
+<form class="form-inline" method="GET" action="/quizes/answer">
   <div class="form-group">
-    <label>Pregunta:</label>
-    <label>
+    <div class="card-header">Pregunta:
       <%= pregunta %>
-    </label>
-    <input type="text" class="form-control" name="respuesta" placeholder="respuesta">
+    </div>
+    <div class="card-body">
+      <input type="text" class="form-control" name="respuesta" placeholder="respuesta">
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
+  <div class="card-footer">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
 </form>
