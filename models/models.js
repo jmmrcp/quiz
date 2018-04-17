@@ -2,6 +2,7 @@ var path = require('path');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(null, null, null, {
   dialect: "sqlite",
+  operatorsAliases: Sequelize.Op,
   storage: "quiz.sqlite"
 });
 var Quiz = sequelize.import(path.join(__dirname, 'quiz'));

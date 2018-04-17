@@ -8,6 +8,11 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Quiz' });
 });
 
+/* GET Página del Autor */
+router.get('/author', function (req, res, next) {
+  res.render('author');
+});
+
 router.get('/quizes/question', quickControler.question);
 router.get('/quizes/answer', quickControler.answer);
 
