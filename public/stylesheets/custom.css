@@ -34,6 +34,18 @@ a:hover {
     text-decoration: none;
 }
 
+thead {
+    color: yellow;
+    text-align: center;
+}
+
+table a {
+    color: white;
+}
+
+table a:hover {
+    color: grey;
+}
 img {
     width: 100%;
     max-width: 100%;
