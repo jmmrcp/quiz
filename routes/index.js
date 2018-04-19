@@ -13,8 +13,7 @@ router.get('/author', function (req, res, next) {
   res.render('author');
 });
 
-//router.get('/quizes/question', quickControler.question);
-//router.get('/quizes/answer', quickControler.answer);
+router.param('quizId', quickControler.load);
 
 router.get('/quizes', quickControler.index);
 router.get('/quizes/:quizId(\\d+)', quickControler.show);
