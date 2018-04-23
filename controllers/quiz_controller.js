@@ -1,23 +1,18 @@
 var models = require('../models/models');
 
 exports.load = function (req, res, next, quizid) {
-  models.Quiz.findById(quizid).then(
-    function (quiz) {
-      if (quizid) {
-        req.quiz = quiz;
-        next();
-      } else {
-        next(new Error('No existe quizId=' + quizid));
-      }
-    }
-  ).catch(function (error) {
-    next(Error);
-  })
+  var quiz = models.Quiz.findById(Number(quizId));
+  if (quiz) {
+    req.quiz = quiz;
+    next();
+  } else {
+    throw new Error('No existe ningún quiz con id=' + quizId);
+  }
 };
 
 exports.index = function (req, res) {
-  models.Quiz.findAll().then(
-    function (quizes) {
+  models.Quiz.findAll()
+    .then(function (quizes) {
       res.render('quizes/index', {
         quizes: quizes
       });
@@ -35,8 +30,34 @@ exports.answer = function (req, res) {
   if (req.query.respuesta.toUpperCase() === req.quiz.respuesta.toUpperCase()) {
     resultado = 'Correcto';
   }
-  res.render('quizes/answer.ejs', {
+  res.render('quizes/answer', {
     quiz: req.quiz,
     respuesta: resultado
   });
+};
+
+exports.new = function (req, res) {
+  var quiz = models.Quiz.build({
+    pregunta: 'Pregunta',
+    respuesta: 'Respuesta'
+  })
+  res.render('quizes/new', {
+    quiz: quiz
+  });
+};
+
+// POST /quizzes/create
+exports.create = function (req, res, next) {
+  var quiz = {
+    question: req.body.question,
+    answer: req.body.answer
+  };
+  // Validar que no estan vacios
+  if (!quiz.question || !quiz.answer) {
+    res.render('quizzes/new', { quiz: quiz });
+    return;
+  }
+  // guarda el nuevo quiz
+  quiz = models.Quiz.create(quiz);
+  res.redirect('/quizzes/' + quiz.id);
 };
