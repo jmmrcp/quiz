@@ -87,9 +87,13 @@ header {
 
 .jumbotron-fluid {
     padding: 0;
+    width: 100%;
+    height: auto;
+    background: transparent;
 }
 
 .parallax {
+    background-image: url(/images/quiz.jpg);
     text-align: center;
     background-position: center center;
     background-repeat: no-repeat;
@@ -126,7 +130,7 @@ header {
 }
 
 #site-title {
-    max-width: 150px;
+    max-width: 300px;
 }
 
 input.form-control {
