@@ -1,13 +1,7 @@
-<form class="form-inline" method="GET" action="/quizes/<%= quiz.id %>/answer">
+<form method="GET" action="/quizes/<%= quiz.id %>/answer">
   <div class="form-group">
-    <div class="card-header">Pregunta:
-      <%= quiz.pregunta %>
-    </div>
-    <div class="card-body">
+    Pregunta:<%= quiz.pregunta %>
       <input type="text" class="form-control" name="respuesta" placeholder="respuesta">
-    </div>
-  </div>
-  <div class="card-footer">
     <button type="submit" class="btn btn-primary">Enviar</button>
   </div>
 </form>

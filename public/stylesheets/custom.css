@@ -46,6 +46,14 @@ table a {
 table a:hover {
     color: grey;
 }
+
+label {
+    font-family: 'Lato', sans-serif;
+    font-style: oblique;
+    font-size: 0.7em;
+    font-weight: 300;
+}
+
 img {
     width: 100%;
     max-width: 100%;

@@ -1,12 +1,7 @@
-<p> Listado de Preguntas </p>
+<h3>Lista de Preguntas</h3>
 <div class="table-responsive">
 <table class="table table-dark table-striped">
-<thead>
-<tr>
-<th>Preguntas</th>
-</tr>
-</thead>
-<% var i; for (i = 0; i < quizes.length; i++) { %>
+<% for (var i in quizes) { %>
 <tr>
 <td>
 <a href = "quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
