@@ -3,6 +3,8 @@ var router = express.Router();
 
 var quickControler = require('../controllers/quiz');
 
+var schedulers = require('../schedulers/scheduler');
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Quiz' });
