@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var routes = require('./routes/index');
 var partials = require('express-partials');
 
@@ -40,6 +40,6 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+// app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 module.exports = app;

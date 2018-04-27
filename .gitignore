@@ -64,3 +64,4 @@ typings/
 .vscode/
 *sublime*
 *.pdf
+quiz.sqlite
