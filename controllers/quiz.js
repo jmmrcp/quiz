@@ -15,7 +15,7 @@ exports.load = (req, res, next, quizId) => {
     });
 };
 
-exports.index = (req, res) => {
+exports.index = (req, res, index) => {
   models.Quiz.findAll()
     .then(quizes => {
       res.render('quizes/index', {
@@ -24,13 +24,13 @@ exports.index = (req, res) => {
     })
 };
 
-exports.show = (req, res) => {
+exports.show = (req, res, next) => {
   res.render('quizes/show', {
     quiz: req.quiz
   });
 };
 
-exports.answer = (req, res) => {
+exports.answer = (req, res, next) => {
   var resultado = 'Incorrecto';
   if (req.query.respuesta.toUpperCase() === req.quiz.respuesta.toUpperCase()) {
     resultado = 'Correcto';
@@ -41,7 +41,7 @@ exports.answer = (req, res) => {
   });
 };
 
-exports.new = (req, res) => {
+exports.new = (req, res, next) => {
   var quiz = models.Quiz.build({
     pregunta: '',
     respuesta: ''
@@ -68,4 +68,31 @@ exports.create = (req, res, next) => {
   // guarda el nuevo quiz
   quiz = models.Quiz.create(quiz);
   res.redirect('/quizes');
+};
+
+exports.edit = (req, res, next) => {
+
+};
+
+exports.update = (req, res, next) => {
+
+};
+
+exports.destroy = (req, res, next) => {
+  var quizId = req.params.quizId;
+  var quiz = models.Quiz.findById(quizId);
+  if (quiz) {
+    models.Quiz.destroy(quiz);
+    res.redirect('/quizes');
+  } else {
+    next(new Error('No existe ningun quiz con ID=' + quizId));
+  }
+};
+
+exports.play = (req, res, next) => {
+
+};
+
+exports.check = (req, res, next) => {
+
 };

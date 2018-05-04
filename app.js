@@ -7,6 +7,7 @@ var logger = require('morgan');
 // var favicon = require('serve-favicon');
 var routes = require('./routes/index');
 var partials = require('express-partials');
+var methodOverrode = require('method-override');
 
 var app = express();
 
@@ -15,10 +16,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(partials());
+app.use(methodOverrode('_method', {
+    methods: ["POST",
+        "GET"]
+}))
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

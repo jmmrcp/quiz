@@ -22,6 +22,9 @@ router.get('/quizes/:quizId(\\d+)', quickControler.show);
 router.get('/quizes/:quizId(\\d+)/answer', quickControler.answer);
 router.get('/quizes/new', quickControler.new);
 router.post('/quizes/create', quickControler.create);
+router.get('/quizes/:quizId(\\d+)/edit', quickControler.edit);
+router.get('/quizes/:quizId(\\d+)', quickControler.update);
+router.delete('/quizes/:quizId(\\d+)', quickControler.destroy);
 
 /*
 router.get('/goback', redirectBack);
@@ -30,7 +33,7 @@ router.get(/(?!\/new$|\/edit$|\/play$|\/check$|\/session$|\/(\d+)$)\/[^\/]*$/, (
   req.session.backURL = req.url;
   next();
 });
-
+ 
 function redirectBack(req, res, next) {
   var url = req.session.backURL || "/";
   delete req.session.backURL;
