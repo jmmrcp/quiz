@@ -5,3 +5,10 @@
     <button type="submit" class="btn btn-primary">Enviar</button>
   </div>
 </form>
+
+<a href = "/quizes/<%= quiz.id %>/comments/new"><buton button class="btn btn-warning">Nuevo Comentario</buton></a>
+
+<% for (var i in quiz.Comments) { %>
+<% var comment = quiz.Comments[i]; %>
+<%= comments.texto %>
+<% } %>

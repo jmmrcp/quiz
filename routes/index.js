@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var quickControler = require('../controllers/quiz');
+var commentControler = require('../controllers/comment');
 
 var schedulers = require('../schedulers/scheduler');
 
@@ -25,6 +26,9 @@ router.post('/quizes/create', quickControler.create);
 router.get('/quizes/:quizId(\\d+)/edit', quickControler.edit);
 router.put('/quizes/:quizId(\\d+)', quickControler.update);
 router.delete('/quizes/:quizId(\\d+)', quickControler.destroy);
+
+router.get('/quizes/:quizId(\\d+)/comments/new', commentControler.new);
+router.post('/quizes/:quizId(\\+d)/comments', commentControler.create);
 
 /*
 router.get('/goback', redirectBack);
