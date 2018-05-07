@@ -14,7 +14,8 @@
 <a href = "quizes/<%= quiz.id %>/edit"><buton button class="btn btn-warning">Editar</buton></a>
 </td>
 <td>
-<a href="/quizzes/<%= quiz.id %>?_method=delete" onClick="return confirm('Borrar: <%= quiz.pregunta %>');"><button button class="btn btn-danger">borrar</button></a>
+<form class="form" method="POST" action="/quizes/<%= quiz.id %>?_method=delete">
+<button type ="submit" button class="btn btn-danger" onClick="return confirm('Borrar: <%= quiz.pregunta %>');">borrar</button></form>
 </td>
 </tr>
 <% } %>
