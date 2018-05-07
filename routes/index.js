@@ -23,7 +23,7 @@ router.get('/quizes/:quizId(\\d+)/answer', quickControler.answer);
 router.get('/quizes/new', quickControler.new);
 router.post('/quizes/create', quickControler.create);
 router.get('/quizes/:quizId(\\d+)/edit', quickControler.edit);
-router.get('/quizes/:quizId(\\d+)', quickControler.update);
+router.put('/quizes/:quizId(\\d+)', quickControler.update);
 router.delete('/quizes/:quizId(\\d+)', quickControler.destroy);
 
 /*

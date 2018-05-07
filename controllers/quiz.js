@@ -71,28 +71,53 @@ exports.create = (req, res, next) => {
 };
 
 exports.edit = (req, res, next) => {
-
+  var quiz = req.quiz;
+  res.render('quizes/edit', { quiz: quiz });
 };
 
 exports.update = (req, res, next) => {
+  var quiz = {
+    regunta: req.body.question,
+    respuesta: req.body.answer,
+  };
+  // Validar que no estan vacios
+  if (!quiz.pregunta || !quiz.respuesta) {
+    res.render('quizes/new', { quiz: quiz });
+    return;
 
-};
 
-exports.destroy = (req, res, next) => {
-  var quizId = req.params.quizId;
-  var quiz = models.Quiz.findById(quizId);
-  if (quiz) {
-    models.Quiz.destroy(quiz);
-    res.redirect('/quizes');
-  } else {
-    next(new Error('No existe ningun quiz con ID=' + quizId));
-  }
-};
+    req.quiz
+      .validate()
+      .then((err) => {
+        if (err) {
+          res.render('quizes/edit', { quiz: req.quiz });
+        } else {
+          req.quiz
+            .save({
+              fields: ["pregunta", "respuesta"]
+            })
+            .then(() => {
+              res.redirect('/quizes');
+            })
+        }
+      });
+  };
 
-exports.play = (req, res, next) => {
+  exports.destroy = (req, res, next) => {
+    var quizId = req.params.quizId;
+    var quiz = models.Quiz.findById(quizId);
+    if (quiz) {
+      models.Quiz.destroy(quiz);
+      res.redirect('/quizes');
+    } else {
+      next(new Error('No existe ningun quiz con ID=' + quizId));
+    }
+  };
 
-};
+  exports.play = (req, res, next) => {
 
-exports.check = (req, res, next) => {
+  };
 
-};
+  exports.check = (req, res, next) => {
+
+  };
