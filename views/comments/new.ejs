@@ -1,5 +1,6 @@
 <h3>Añadir Comentario</h3>
-<form class="form" method="POST" action="/quizes/<%= quizId %>/comments">
+<form class="form" method="POST" action="/quizes/<%= QuizId %>/comments">
 <input type="text" class="form-control" name="texto" placeholder="comentario">
 <button type="submit" class="btn btn-primary">Enviar</button>
+<a href="/quizes"><button type="button" button class="btn btn-danger">Cancelar</button></a>
 </form>

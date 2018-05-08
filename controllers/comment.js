@@ -4,7 +4,7 @@ var models = require('../models/models.js');
 // GET '/comments/new'
 exports.new = (req, res, next) => {
   res.render('comments/new.ejs', {
-    quizId: req.params.quizId
+    QuizId: req.params.quizId
   });
 };
 
@@ -16,7 +16,7 @@ exports.create = (req, res, next) => {
     QuizId: req.params.quizId
   };
   if (!comment.texto) {
-    res.render('comments/new', { comment: comment });
+    res.render('comments/new', { QuizId: req.params.quizId });
     return;
   }
   comment = models.Comment.create(comment);
