@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
     <a class="navbar-brand" href="/">Quiz</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -34,6 +34,15 @@
         <li class="nav-item">
           <a class="nav-link" href="/author">Creditos</a>
         </li>
+        <% if (!session.user) {%>
+        <li class="nav-item">
+        <a class="nav-link" href="/login"><button type="button" button class="btn btn-outline-success btn-sm">Login</button></a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout"><button type="button" button class="btn btn-outline-danger btn-sm"><%= session.user.username %></button></a>
+        </li>
+        <% } %>
       </ul>
     </div>
   </nav>

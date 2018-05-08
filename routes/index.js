@@ -3,6 +3,7 @@ var router = express.Router();
 
 var quickControler = require('../controllers/quiz');
 var commentControler = require('../controllers/comment');
+var sessionControler = require('../controllers/session');
 
 var schedulers = require('../schedulers/scheduler');
 
@@ -15,6 +16,10 @@ router.get('/', (req, res, next) => {
 router.get('/author', (req, res, next) => {
   res.render('author');
 });
+
+router.get('/login', sessionControler.new);
+router.post('/login', sessionControler.create);
+router.get("/logout", sessionControler.destroy);
 
 router.param('quizId', quickControler.load);
 
@@ -29,19 +34,5 @@ router.delete('/quizes/:quizId(\\d+)', quickControler.destroy);
 
 router.get('/quizes/:quizId(\\d+)/comments/new', commentControler.new);
 router.post('/quizes/:quizId(\\d+)/comments', commentControler.create);
-
-/*
-router.get('/goback', redirectBack);
-// Rutas GET que no acaban en /new, /edit, /play, /check, /session, o /:id.
-router.get(/(?!\/new$|\/edit$|\/play$|\/check$|\/session$|\/(\d+)$)\/[^\/]*$/, (req, res, next) => {
-  req.session.backURL = req.url;
-  next();
-});
- 
-function redirectBack(req, res, next) {
-  var url = req.session.backURL || "/";
-  delete req.session.backURL;
-  res.redirect(url);
-} */
 
 module.exports = router;
