@@ -11,20 +11,14 @@ exports.new = (req, res, next) => {
 
 // post '/comments'
 exports.create = (req, res, next) => {
-  var comment = models.Comment.build({
-    texto: req.body.comment.texto,
-    quizId: req.params.quizId
-  });
+  var comment = {
+    texto: req.body.texto,
+    QuizId: req.params.quizId
+  };
   if (!comment.texto) {
     res.render('comments/new', { comment: comment });
     return;
   }
-  comment
-    .save()
-    .then(() => {
-      res.redirect('/quizes/' + req.params.quizId);
-    })
-    .catch((error) => {
-      next(error)
-    });
+  comment = models.Comment.create(comment);
+  res.redirect('/quizes/' + req.params.quizId);
 };

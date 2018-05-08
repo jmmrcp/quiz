@@ -28,7 +28,7 @@ router.put('/quizes/:quizId(\\d+)', quickControler.update);
 router.delete('/quizes/:quizId(\\d+)', quickControler.destroy);
 
 router.get('/quizes/:quizId(\\d+)/comments/new', commentControler.new);
-router.post('/quizes/:quizId(\\+d)/comments', commentControler.create);
+router.post('/quizes/:quizId(\\d+)/comments', commentControler.create);
 
 /*
 router.get('/goback', redirectBack);
