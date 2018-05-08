@@ -57,7 +57,7 @@ exports.new = (req, res, next) => {
   });
 };
 
-// POST /quizzes/create
+// POST /quizes/create
 exports.create = (req, res, next) => {
   var quiz = {
     pregunta: req.body.question,
