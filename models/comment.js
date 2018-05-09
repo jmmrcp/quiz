@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Falta Comentario"
           }
         }
+      },
+      publicado: {
+        type: DataTypes.BOOLEAN,
+        DefaultValue: false
       }
     });
 }

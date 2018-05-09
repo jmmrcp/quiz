@@ -1,5 +1,21 @@
 var models = require('../models/models.js');
 
+exports.load = (req, res, next, commentId) => {
+  models.Comment.find({
+    where: { id: Number(commentId) }
+  })
+    .then((comment) => {
+      if (comment) {
+        req.comment = comment;
+        next();
+      } else {
+        throw new Error('No existe commentId=' + commentId);
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 
 // GET '/comments/new'
 exports.new = (req, res, next) => {
@@ -21,4 +37,18 @@ exports.create = (req, res, next) => {
   }
   comment = models.Comment.create(comment);
   res.redirect('/quizes/' + req.params.quizId);
+};
+
+exports.publish = (req, res, next) => {
+  req.comment.publicado = true;
+  req.comment
+    .save({
+      fields: ["publicado"]
+    })
+    .then(() => {
+      res.redirect('/quizes/' + req.params.quizId);
+    })
+    .catch((error) => {
+      next(error);
+    })
 };

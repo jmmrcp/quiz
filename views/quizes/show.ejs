@@ -8,14 +8,19 @@
   </div>
 </form>
 </div>
-
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
 <h3>Comentarios</h3>
+<!--
 <% for (var i in quiz.Comments) { %>
 <% var comment = quiz.Comments[i]; %>
-  <p><%= comment.texto %></p>
+<% if (session.user || comment.publicado) { %>
+  <%= comment.texto %>
+  <a href = "/quizes/<%= quiz.id %>/comments/new">
+  <buton button class="btn btn-dark">Nuevo Comentario</buton></a>
+  <% if (session.user && !comment.publicado) { %>
+    <a href="/quizes/<%= quiz.id %>/comments/<%= comment.id %>/publish"
+    <buton>Publicar</buton>
+  <% } %>
 <% } %>
-<% if (session.user) { %>
-  <a href = "/quizes/<%= quiz.id %>/comments/new"><buton button class="btn btn-dark">Nuevo Comentario</buton></a>
-<% } %>
+-->
 </div>
