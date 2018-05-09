@@ -26,13 +26,13 @@ router.param('quizId', quickControler.load);
 router.get('/quizes', quickControler.index);
 router.get('/quizes/:quizId(\\d+)', quickControler.show);
 router.get('/quizes/:quizId(\\d+)/answer', quickControler.answer);
-router.get('/quizes/new', quickControler.new);
-router.post('/quizes/create', quickControler.create);
+router.get('/quizes/new', sessionControler.loginRequired, quickControler.new);
+router.post('/quizes/create', sessionControler.loginRequired, quickControler.create);
 router.get('/quizes/:quizId(\\d+)/edit', quickControler.edit);
-router.put('/quizes/:quizId(\\d+)', quickControler.update);
-router.delete('/quizes/:quizId(\\d+)', quickControler.destroy);
+router.put('/quizes/:quizId(\\d+)', sessionControler.loginRequired, quickControler.update);
+router.delete('/quizes/:quizId(\\d+)', sessionControler.loginRequired, quickControler.destroy);
 
-router.get('/quizes/:quizId(\\d+)/comments/new', commentControler.new);
-router.post('/quizes/:quizId(\\d+)/comments', commentControler.create);
+router.get('/quizes/:quizId(\\d+)/comments/new', sessionControler.loginRequired, commentControler.new);
+router.post('/quizes/:quizId(\\d+)/comments', sessionControler.loginRequired, commentControler.create);
 
 module.exports = router;

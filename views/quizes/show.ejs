@@ -1,3 +1,4 @@
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
 <h3>Preguntas</h3>
 <form method="GET" action="/quizes/<%= quiz.id %>/answer">
   <div class="form-group">
@@ -6,10 +7,15 @@
     <button type="submit" class="btn btn-primary">Enviar</button>
   </div>
 </form>
+</div>
 
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
 <h3>Comentarios</h3>
 <% for (var i in quiz.Comments) { %>
 <% var comment = quiz.Comments[i]; %>
-<p><%= comment.texto %></p>
+  <p><%= comment.texto %></p>
 <% } %>
-<a href = "/quizes/<%= quiz.id %>/comments/new"><buton button class="btn btn-dark">Nuevo Comentario</buton></a>
+<% if (session.user) { %>
+  <a href = "/quizes/<%= quiz.id %>/comments/new"><buton button class="btn btn-dark">Nuevo Comentario</buton></a>
+<% } %>
+</div>
