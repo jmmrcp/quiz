@@ -14,12 +14,17 @@
 <% for (var i in quiz.Comments) { %>
   <% var comment = quiz.Comments[i]; %>
   <% if (session.user || comment.publicado) { %>
-    <p><%= comment.texto %></p>
+    <p> <%= comment.texto %></p>
     <% if (session.user && !comment.publicado) { %>
-      <a href="/quizes/<%= quiz.id %>/comments/<%= comment.id %>/publish"></a>
+      <form method="POST" action="/quizes/<%= quiz.id %>/comments/<%= comment.id %>/publish?_method=put">
+      <button type="submit" class="btn btn-primary">Publicar</button>
+      <form method="POST" action="/quizes/<%= quiz.id %>/comments/<%= comment.id %>/?_method=delete">
+      <button type="submit" class="btn btn-danger" onClick="return confirm('Borrar: <%= comment.texto %>');">Borrar</button>
     <% } %>
   <% } %>
 <% } %>
+</div>
+<div>
 <a href = "/quizes/<%= quiz.id %>/comments/new">
  <buton button class="btn btn-dark">Nuevo Comentario</buton></a>
 </div>

@@ -55,3 +55,14 @@ exports.publish = (req, res, next) => {
       next(error);
     })
 };
+
+exports.destroy = (req, res, next) => {
+  req.comment
+    .destroy()
+    .then(() => {
+      res.redirect('/quizes/' + req.params.quizId);
+    })
+    .catch((error) => {
+      next(error)
+    });
+};

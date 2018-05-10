@@ -35,6 +35,7 @@ router.delete('/quizes/:quizId(\\d+)', sessionControler.loginRequired, quickCont
 
 router.get('/quizes/:quizId(\\d+)/comments/new', commentControler.new);
 router.post('/quizes/:quizId(\\d+)/comments', commentControler.create);
-router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', sessionControler.loginRequired, commentControler.publish)
+router.put('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', sessionControler.loginRequired, commentControler.publish)
+router.delete('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)', sessionControler.loginRequired, commentControler.destroy);
 
 module.exports = router;
