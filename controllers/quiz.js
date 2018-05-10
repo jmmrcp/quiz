@@ -1,4 +1,4 @@
-var models = require('../models/models.js');
+var models = require('../models/models');
 
 exports.load = (req, res, next, quizId) => {
   models.Quiz.find({

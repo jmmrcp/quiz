@@ -1,4 +1,5 @@
-var models = require('../models/models.js');
+var models = require('../models/models');
+
 
 exports.load = (req, res, next, commentId) => {
   models.Comment.find({
@@ -16,6 +17,7 @@ exports.load = (req, res, next, commentId) => {
       next(error);
     });
 };
+
 
 // GET '/comments/new'
 exports.new = (req, res, next) => {
@@ -38,6 +40,7 @@ exports.create = (req, res, next) => {
   comment = models.Comment.create(comment);
   res.redirect('/quizes/' + req.params.quizId);
 };
+
 
 exports.publish = (req, res, next) => {
   req.comment.publicado = true;

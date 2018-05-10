@@ -1,26 +1,25 @@
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
 <h3>Preguntas</h3>
 <form method="GET" action="/quizes/<%= quiz.id %>/answer">
-  <div class="form-group">
-    Pregunta:<%= quiz.pregunta %>
-      <input type="text" class="form-control" name="respuesta" placeholder="respuesta">
-    <button type="submit" class="btn btn-primary">Enviar</button>
+  <div class="form-group">  
+  Pregunta:<%= quiz.pregunta %>
+  <input type="text" class="form-control" name="respuesta" placeholder="respuesta">
+  <button type="submit" class="btn btn-primary">Enviar</button>
   </div>
 </form>
 </div>
+
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
 <h3>Comentarios</h3>
-<!--
 <% for (var i in quiz.Comments) { %>
-<% var comment = quiz.Comments[i]; %>
-<% if (session.user || comment.publicado) { %>
-  <%= comment.texto %>
-  <a href = "/quizes/<%= quiz.id %>/comments/new">
-  <buton button class="btn btn-dark">Nuevo Comentario</buton></a>
-  <% if (session.user && !comment.publicado) { %>
-    <a href="/quizes/<%= quiz.id %>/comments/<%= comment.id %>/publish"
-    <buton>Publicar</buton>
+  <% var comment = quiz.Comments[i]; %>
+  <% if (session.user || comment.publicado) { %>
+    <p><%= comment.texto %></p>
+    <% if (session.user && !comment.publicado) { %>
+      <a href="/quizes/<%= quiz.id %>/comments/<%= comment.id %>/publish"></a>
+    <% } %>
   <% } %>
 <% } %>
--->
+<a href = "/quizes/<%= quiz.id %>/comments/new">
+ <buton button class="btn btn-dark">Nuevo Comentario</buton></a>
 </div>
