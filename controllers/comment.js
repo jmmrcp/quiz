@@ -3,8 +3,8 @@ var models = require('../models/models');
 
 exports.load = (req, res, next, commentId) => {
   models.Comment.find({
-    where: { id: Number(commentId) }
-  })
+      where: { id: Number(commentId) }
+    })
     .then((comment) => {
       if (comment) {
         req.comment = comment;

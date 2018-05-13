@@ -2,9 +2,9 @@ var models = require('../models/models');
 
 exports.load = (req, res, next, quizId) => {
   models.Quiz.find({
-    where: { id: Number(quizId) },
-    include: [{ model: models.Comment }]
-  })
+      where: { id: Number(quizId) },
+      include: [{ model: models.Comment }]
+    })
     .then((quiz) => {
       if (quiz) {
         req.quiz = quiz;

@@ -1,7 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
-    'Quiz',
-    {
+    'Quiz', {
       pregunta: {
         type: DataTypes.STRING,
         validate: {

@@ -10,17 +10,15 @@ var dialect = (url[1] || null);
 var port = (url[5] || null);
 var host = (url[4] || null);
 var storage = process.env.DATABASE_STORAGE;
-var sequelize = new Sequelize(DB_name, user, pwd,
-  {
-    dialect: protocol,
-    protocol: protocol,
-    port: port,
-    host: host,
-    storage: storage,  // solo SQLite (.env)
-    omitNull: true,      // solo Postgres
-    operatorsAliases: Sequelize.Op,
-  }
-);
+var sequelize = new Sequelize(DB_name, user, pwd, {
+  dialect: protocol,
+  protocol: protocol,
+  port: port,
+  host: host,
+  storage: storage, // solo SQLite (.env)
+  omitNull: true, // solo Postgres
+  operatorsAliases: Sequelize.Op,
+});
 
 var quiz_path = path.join(__dirname, 'quiz');
 var Quiz = sequelize.import(path.join(quiz_path));
@@ -44,9 +42,9 @@ sequelize.sync()
             respuesta: 'Roma'
           });
           Quiz.create({
-            pregunta: 'Capital de Portugal',
-            respuesta: 'Lisboa'
-          })
+              pregunta: 'Capital de Portugal',
+              respuesta: 'Lisboa'
+            })
             .then(() => {
               console.log("Base de datos creada.")
             })
