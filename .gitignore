@@ -60,8 +60,11 @@ typings/
 # next.js build output
 .next
 
+*.sq*
+
 # vscode
 .vscode/
+
 *sublime*
+
 *.pdf
-quiz.sqlite
